@@ -18,7 +18,7 @@ public class IsolateChars {
         String temp = "";
         String temp2 = ""; 
         int wordLen = word.length(); 
-        int lastLetter = word.length() - 1; 
+        int lastLetter = wordLen - 1; 
         int secondLetter = word.charAt(1);   
  
         
@@ -32,9 +32,6 @@ public class IsolateChars {
             temp2 = temp2 + word.charAt(i); 
             temp2 = temp2 + word.charAt((wordLen - 1) - i); 
            
-            if () {
-                    
-                } 
         }
         
         System.out.println("Your word is: " + word);

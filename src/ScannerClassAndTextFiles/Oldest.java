@@ -12,19 +12,26 @@ import javax.swing.JOptionPane;
  * @author Murrayy
  */
 public class Oldest {
-    
+
     public static void main(String[] args) {
-        String input = JOptionPane.showInputDialog("Enter a boy's name and age."); 
-        Scanner sc = new Scanner(input);
-        String name = sc.nextLine();
-        int oldest = sc.nextInt(); 
-        
+
+        int oldest = 0;
+        String oldestName = "";
+
+        String input = JOptionPane.showInputDialog("Enter a boy's name and age.");
+
         while (!input.equalsIgnoreCase("stop")) {
-             
-            if () {
-                
+
+            Scanner sc = new Scanner(input);
+            String name = sc.next();
+            int age = sc.nextInt();
+
+            if (oldest < age) {
+                oldest = age;
+                oldestName = name;
             }
-            
+            input = JOptionPane.showInputDialog("Enter a boy's name and age. "); 
         }
+        System.out.println("Oldest boy: " + oldestName + "\nAge: " + oldest);
     }
 }
