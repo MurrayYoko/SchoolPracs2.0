@@ -57,8 +57,6 @@ public class Client {
   }
   
   public void display(){
-      System.out.println(changeName()); 
-      System.out.println(getAccNo());
-      System.out.println(getBalance());
+      System.out.println("Name: " + changeName() + "\nAccount Number: " + accountNumber + "\nBalance: " + balance);
   }
 }
