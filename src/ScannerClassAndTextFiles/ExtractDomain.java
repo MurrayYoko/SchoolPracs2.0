@@ -34,8 +34,12 @@ public class ExtractDomain {
                 
                 System.out.println("Domain " + domainNo + ": " + domain);
                 
+                lineSc.close();
             }
+            filesS.close();
+            
             System.out.println("Number of websites processed: " + domainNo);
+            
         } catch (Exception e) {
             System.out.println("There was an Error. ");
         }

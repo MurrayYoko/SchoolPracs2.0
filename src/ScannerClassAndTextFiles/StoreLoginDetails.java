@@ -42,6 +42,8 @@ public class StoreLoginDetails {
                 
                 name = JOptionPane.showInputDialog("Enter a name (enter stop to stop)");
             }
+            fw.close();
+            
             System.out.println("Number of logins: " + loginNo);
             
         } catch (IOException ex) {

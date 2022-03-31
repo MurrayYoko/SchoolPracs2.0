@@ -26,6 +26,6 @@ public class UserDetails {
             int age = sc.nextInt(); 
             System.out.println("Name: " + firstName + "\nSurname: " + surname + "\nAge: " + age);
         }
-   
+    sc.close();
     }
 }
