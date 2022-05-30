@@ -19,7 +19,7 @@ public class ResultSet {
        private int scoreGeo; 
        private int scoreTrig; 
     
-    
+    //vaiables
     public ResultSet(String n, String e, int sA, int sG, int sT){
         name = n; 
         email = e; 

@@ -4,8 +4,11 @@
  */
 package PracticePracG11T2;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -33,7 +36,49 @@ public class ResultSetManager {
         }
     }
     
-    public printRatings(){
+    public String printRatings(){
+        
+        try { 
+            Scanner sc = new Scanner(new File(filePath)).useDelimiter("#");
+            ResultSet highest = null; 
+            int count =0;
+            int total = 0; 
+            System.out.println("MATH APP - ALL RESULTS" + "\n-------------------\n" );
+            
+             while (sc.hasNextLine()) {
+               String currentLine = sc.nextLine();  
+               Scanner lineScanner = new Scanner(currentLine).useDelimiter("#"); 
+               
+               String name = sc.next(); 
+               String email = sc.next(); 
+               int algSco = sc.nextInt(); 
+               int geoSco = sc.nextInt(); 
+               int trigSco = sc.nextInt(); 
+               
+                 
+               ResultSet r = new ResultSet(name , email, algSco, geoSco, trigSco); 
+               count++; 
+               total += r.getRating(); 
+               
+                 if (highest == null) {
+                     highest = r; 
+                 }
+               if (r.getRating() > highest.getRating()) {
+                     highest = r;
+                }
+
+                 System.out.println(r.nameAndRating());
+                 System.out.println("Avg" + total/count);
+                 System.out.println("Highest was " + highest.getName() + " with score of " + highest.getRating() );
+            }
+            
+            //store results set = new (variable,)
+            
+        } catch (FileNotFoundException ex) {
+            System.out.println("File not found");
+        }
+        return null;
         
     }
-}
+    }
+
