@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,7 +30,7 @@ public class ResultSetManager {
             
             ResultSet rs = new ResultSet(n, e, sA, sG, sT);
             FileWriter fw = new FileWriter(filePath, true);
-            fw.append(rs.toString());
+            fw.append(rs.toString() + "\n");
             fw.close();
         } catch (IOException ex) {
             Logger.getLogger(ResultSetManager.class.getName()).log(Level.SEVERE, null, ex);
@@ -49,11 +50,11 @@ public class ResultSetManager {
                String currentLine = sc.nextLine();  
                Scanner lineScanner = new Scanner(currentLine).useDelimiter("#"); 
                
-               String name = sc.next(); 
-               String email = sc.next(); 
-               int algSco = sc.nextInt(); 
-               int geoSco = sc.nextInt(); 
-               int trigSco = sc.nextInt(); 
+               String name = lineScanner.next(); 
+               String email = lineScanner.next(); 
+               int algSco = lineScanner.nextInt(); 
+               int geoSco = lineScanner.nextInt(); 
+               int trigSco = lineScanner.nextInt(); 
                
                  
                ResultSet r = new ResultSet(name , email, algSco, geoSco, trigSco); 
@@ -68,10 +69,10 @@ public class ResultSetManager {
                 }
 
                  System.out.println(r.nameAndRating());
-                 System.out.println("Avg" + total/count);
-                 System.out.println("Highest was " + highest.getName() + " with score of " + highest.getRating() );
+               
             }
-            
+            System.out.println("Avg: " + total/count);
+            System.out.println("Highest was " + highest.getName() + " with score of " + highest.getRating() );
             //store results set = new (variable,)
             
         } catch (FileNotFoundException ex) {
