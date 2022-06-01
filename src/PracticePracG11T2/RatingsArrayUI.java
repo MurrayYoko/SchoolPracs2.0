@@ -16,12 +16,11 @@ import java.util.logging.Logger;
 public class RatingsArrayUI {
     public static void main(String[] args) {
         
-        
         RatingsArray rA;
         try {
             rA = new RatingsArray();
-            
-            System.out.println(rA.getElement(120));
+            rA.sort();
+            System.out.println("NUMBER SUMMARY" + "\n" + "---------------" + "\nLOWEST: " + rA.getFirst() + "\nHIGHEST: " + rA.getLast() + "\nAVERAGE: " + rA.getAverage());
         } catch (FileNotFoundException ex) {
             Logger.getLogger(RatingsArrayUI.class.getName()).log(Level.SEVERE, null, ex);
         }

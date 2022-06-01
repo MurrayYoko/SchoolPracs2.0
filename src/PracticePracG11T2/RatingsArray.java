@@ -7,6 +7,8 @@ package PracticePracG11T2;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -18,8 +20,8 @@ public class RatingsArray {
     private static int size;
 
     public RatingsArray() throws FileNotFoundException {
-        
-        size = 0; 
+
+        size = 0;
         rating = new int[150];
 
         Scanner sc = new Scanner(new File("data\\clientRatings.txt"));
@@ -29,36 +31,95 @@ public class RatingsArray {
             int currentRating = sc.nextInt();
 
             //save the int to the array
-            rating[size] = currentRating; 
-            
+            rating[size] = currentRating;
+
             //increase size by 1
-            size++; 
+            size++;
         }
-
+        sc.close();
     }
 
-    public int getSize(){
-        return size; 
+    public int getSize() {
+        return size;
     }
-    
-    public int getElement(int index){
-        if(index >= size){
+
+    public int getElement(int index) {
+        if (index >= size) {
             throw new IndexOutOfBoundsException();
         }
         return rating[index];
     }
-    
-    public int getFirst(){
-        return rating[0]; 
+
+    public int getFirst() {
+        return rating[0];
     }
-    
-    public int getLast(){
-        return rating[size]; 
+
+    public int getLast() {
+        return rating[size];
     }
-    
-    public String toString(){
-        
-        return "[" + rating + "]"; 
+
+    public String toString() {
+
+        try {
+
+            Scanner sc = new Scanner(new File("data\\clientRatings.txt"));
+
+            String output = "[";
+
+            while (sc.hasNext()) {
+
+                int currentRating = sc.nextInt();
+
+                output += currentRating + ", ";
+            }
+
+            sc.close();
+            output += "]";
+            return output;
+
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(RatingsArray.class.getName()).log(Level.SEVERE, null, ex);
+
+            return null;
+        }
+
+    }
+
+    public double getAverage() {
+
+        double total = 0;
+
+        for (int i = 0; i < size; i++) {
+
+            int currentNum = rating[i];
+
+            total += currentNum;
+        }
+
+        return total / size;
+    }
+
+    public void sort() {
+
+        for (int currentIndex = 0; currentIndex < size; currentIndex++) {
+            
+            int smallestIndex = 0;
+
+            for (int i = currentIndex; i < size; i++) {
+
+                if (rating[i] > rating[smallestIndex]) {
+
+                    smallestIndex = i;
+
+                }
+            }
+            
+            int temp = rating[currentIndex];
+            rating[currentIndex] = rating[smallestIndex];
+            rating[smallestIndex] = temp;
+            
+
+        }
     }
 }
 
