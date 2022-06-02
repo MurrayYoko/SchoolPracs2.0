@@ -24,19 +24,24 @@ public class RatingsArray {
         size = 0;
         rating = new int[150];
 
-        Scanner sc = new Scanner(new File("data\\clientRatings.txt"));
+        Scanner fileSc = new Scanner(new File("data\\clientRatings.txt"));
 
-        while (sc.hasNext()) {
+        while (fileSc.hasNext()) {
+            
+            String line = fileSc.nextLine(); 
+            Scanner lineSc = new Scanner(line);//.useDelimiter(); 
+            
+
             //get an int from the file 
-            int currentRating = sc.nextInt();
-
+            int currentRating = lineSc.nextInt();
+            
             //save the int to the array
             rating[size] = currentRating;
 
             //increase size by 1
             size++;
         }
-        sc.close();
+        fileSc.close();
     }
 
     public int getSize() {
